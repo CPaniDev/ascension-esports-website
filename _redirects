@@ -2,6 +2,10 @@
 /admin  /pages/admin-login.html
 /dashboard  /pages/admin-dashboard.html
 
+# Player shortcuts
+/player/al3xand3r  /pages/al3xand3r.html
+/player/kkm  /pages/kkm.html
+
 # News
 /news  /pages/news.html
 
