@@ -676,7 +676,7 @@ a.player-card {
 
 @media (max-width: 500px) {
     .staff-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .player-card.staff-card {
