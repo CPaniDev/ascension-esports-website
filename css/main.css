@@ -645,11 +645,40 @@ a.player-card {
     .staff-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .player-card.staff-card {
+        min-height: 320px;
+    }
+
+    .player-card.staff-card .player-role {
+        bottom: 4.5rem;
+    }
+
+    .player-card.staff-card .player-name {
+        bottom: 2rem;
+        font-size: 1.25rem;
+    }
+
+    .player-card.staff-card .player-handle {
+        bottom: 1rem;
+    }
+
+    .staff-grid-single .player-card {
+        max-width: 220px;
+    }
 }
 
 @media (max-width: 500px) {
     .staff-grid {
         grid-template-columns: 1fr;
+    }
+
+    .player-card.staff-card {
+        min-height: 250px;
+    }
+
+    .staff-grid-single .player-card {
+        max-width: 160px;
     }
 }
 
