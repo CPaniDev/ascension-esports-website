@@ -391,7 +391,7 @@ section {
     }
 }
 
-a.player-card {
+.player-card {
     display: block;
     background: var(--bg-card);
     border: 1px solid var(--border);
