@@ -4,6 +4,17 @@ export async function onRequest(context) {
     if (context.request.method === 'POST') {
         try {
             var body = await context.request.json();
+            var token = body.token || '';
+
+            var session = await kv.get('session_' + token);
+            if (!session) {
+                return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+                    status: 401,
+                    headers: { 'Content-Type': 'application/json' }
+                });
+            }
+
+            delete body.token;
             await kv.put('match_config', JSON.stringify(body));
             return new Response(JSON.stringify({ ok: true }), {
                 headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }

@@ -7,7 +7,6 @@ var PUBLISH_API_URL = '/api/config';
 
 class SecureAdminBackoffice {
     constructor() {
-        this.validUsers = [];
         this.loginForm = document.getElementById('admin-login-form');
         this.logoutBtn = document.getElementById('admin-logout');
         this.playerSelect = document.getElementById('player-select');
@@ -15,6 +14,7 @@ class SecureAdminBackoffice {
         this.resultFeedback = document.getElementById('admin-feedback');
         this.recentUpdates = document.getElementById('recent-updates');
         this.players = [];
+        this.authApi = '/api/auth';
     }
 
     /**
@@ -42,177 +42,83 @@ class SecureAdminBackoffice {
         return text.replace(/[&<>"']/g, (m) => map[m]);
     }
 
-    /**
-     * WARNING: Client-side authentication is NOT secure for production use.
-     * This is a temporary solution for static site hosting.
-     * PRODUCTION: Use server-side authentication (Node.js/Express, Python/Flask, etc.)
-     * or platform-level protection (Netlify Identity, Cloudflare Access, etc.)
-     */
-    async loadCredentials() {
-        // For static sites: Credentials should be configured via environment variables
-        // at build time or use a serverless function for authentication.
-        // This placeholder requires the user to configure their credentials properly.
-
-        // Hash function using Web Crypto API (more secure than simple hash)
-        const hashPassword = async (password) => {
-            const encoder = new TextEncoder();
-            const data = encoder.encode(password);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-        };
-
-        // CONFIGURE YOUR CREDENTIALS HERE:
-        // Generate hash with: console.log(await hashPassword('YOUR_PASSWORD'))
-        // Or use: echo -n "YOUR_PASSWORD" | sha256sum
-        const CONFIGURED_USERNAME = 'admin';
-        const CONFIGURED_PASSWORD_HASH = '660ecdf0c4cb3074edebe1d0f07ba17e7409ac8f4cbd358575b9b5650cf6fd6e';
-
-        this.validUsers = [{
-            username: CONFIGURED_USERNAME,
-            passwordHash: CONFIGURED_PASSWORD_HASH
-        }];
-
-        this.hashPassword = hashPassword;
+    async apiPost(url, data) {
+        try {
+            var r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+            return await r.json();
+        } catch (_) {
+            return { ok: false, error: 'Network error' };
+        }
     }
 
-    /**
-     * Validate user credentials (client-side only - NOT secure for production)
-     */
-    async validateCredentials(username, password) {
-        // Sanitize inputs
-        const cleanUsername = this.sanitize(username);
-        const passwordHash = await this.hashPassword(password);
-
-        // Check credentials
-        return this.validUsers.some(user =>
-            user.username === cleanUsername &&
-            user.passwordHash === passwordHash
-        );
-    }
-
-    /**
-     * Initialize login page with security checks
-     */
     async initLogin() {
-        await this.loadCredentials();
-
         if (!this.loginForm) return;
+
+        var token = sessionStorage.getItem('ascensionAdminSession');
+        if (token) {
+            var res = await this.apiPost(this.authApi, { action: 'verify', token: token });
+            if (res.ok) {
+                window.location.href = 'admin-dashboard.html';
+                return;
+            }
+            sessionStorage.removeItem('ascensionAdminSession');
+        }
 
         this.loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Get and sanitize inputs
-            const usernameInput = document.getElementById('username');
-            const passwordInput = document.getElementById('password');
+            var passwordInput = document.getElementById('password');
+            var password = passwordInput.value;
 
-            const username = this.sanitize(usernameInput.value.trim());
-            const password = passwordInput.value; // Don't sanitize password (it affects hashing)
-
-            // Input length validation
-            if (username.length > 100 || password.length > 128) {
+            if (password.length > 128) {
                 this.showFeedback('login-feedback', 'Input too long', 'error');
                 return;
             }
 
-            // Rate limiting check
-            if (this.isRateLimited()) {
-                this.showFeedback('login-feedback', 'Too many attempts. Please try again in 15 minutes.', 'error');
-                return;
-            }
+            var res = await this.apiPost(this.authApi, { action: 'login', password: password });
 
-            // Validate credentials (async)
-            const isValid = await this.validateCredentials(username, password);
-
-            if (isValid) {
-                // PRODUCTION: Use secure HTTP-only cookies instead of sessionStorage
-                // sessionStorage is NOT secure for production authentication
-                sessionStorage.setItem('ascensionAdminSession', this.generateSessionToken());
-                sessionStorage.setItem('ascensionAdminTimestamp', Date.now().toString());
-
-                // Clear failed attempts on successful login
-                sessionStorage.removeItem('loginAttempts');
-
+            if (res.ok) {
+                sessionStorage.setItem('ascensionAdminSession', res.token);
                 window.location.href = 'admin-dashboard.html';
                 return;
             }
 
-            this.recordFailedAttempt();
-            this.showFeedback('login-feedback', 'Invalid username or password', 'error');
-
-            // Clear sensitive fields
+            this.showFeedback('login-feedback', res.error || 'Invalid password', 'error');
             passwordInput.value = '';
         });
+    }
 
-        // Check for existing session
-        if (this.hasValidSession()) {
-            window.location.href = 'admin-dashboard.html';
+    async hasValidSession() {
+        var token = sessionStorage.getItem('ascensionAdminSession');
+        if (!token) return false;
+        var res = await this.apiPost(this.authApi, { action: 'verify', token: token });
+        return res.ok === true;
+    }
+
+    async clearSession() {
+        var token = sessionStorage.getItem('ascensionAdminSession');
+        if (token) {
+            await this.apiPost(this.authApi, { action: 'logout', token: token });
         }
-    }
-
-    /**
-     * Simple rate limiting
-     */
-    isRateLimited() {
-        const attempts = parseInt(sessionStorage.getItem('loginAttempts') || '0', 10);
-        const lastAttempt = parseInt(sessionStorage.getItem('lastLoginAttempt') || '0', 10);
-        const now = Date.now();
-
-        // Reset after 15 minutes
-        if (now - lastAttempt > 900000) {
-            sessionStorage.removeItem('loginAttempts');
-            return false;
-        }
-
-        return attempts >= 10;
-    }
-
-    recordFailedAttempt() {
-        const attempts = parseInt(sessionStorage.getItem('loginAttempts') || '0', 10);
-        sessionStorage.setItem('loginAttempts', (attempts + 1).toString());
-        sessionStorage.setItem('lastLoginAttempt', Date.now().toString());
-    }
-
-    generateSessionToken() {
-        // Simple token generation
-        return Math.random().toString(36).substring(2) + Date.now().toString(36);
-    }
-
-    hasValidSession() {
-        const token = sessionStorage.getItem('ascensionAdminSession');
-        const timestamp = parseInt(sessionStorage.getItem('ascensionAdminTimestamp') || '0', 10);
-
-        if (!token || !timestamp) return false;
-
-        // Session expires after 1 hour
-        const now = Date.now();
-        if (now - timestamp > 3600000) {
-            this.clearSession();
-            return false;
-        }
-
-        return true;
-    }
-
-    clearSession() {
         sessionStorage.removeItem('ascensionAdminSession');
-        sessionStorage.removeItem('ascensionAdminTimestamp');
     }
 
     /**
      * Initialize dashboard with security checks
      */
     async initDashboard() {
-        if (!this.hasValidSession()) {
+        if (!(await this.hasValidSession())) {
             window.location.href = 'admin-login.html';
             return;
         }
 
+        var self = this;
+
         // Logout button
         if (this.logoutBtn) {
-            this.logoutBtn.addEventListener('click', (e) => {
+            this.logoutBtn.addEventListener('click', async (e) => {
                 e.preventDefault();
-                this.clearSession();
+                await self.clearSession();
                 window.location.href = 'admin-login.html';
             });
         }
