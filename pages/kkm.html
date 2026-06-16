@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-ancestors 'none';">
+    <title>KKM - Ascension Esports</title>
+    <link rel="icon" type="image/png" href="../assets/images/logo.png" sizes="32x32">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/player.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="../index.html" class="logo">
+            <img src="../assets/images/logo.png" alt="Ascension Esports" class="logo-img">
+            <span class="logo-text">ASCENSION</span>
+            <span class="logo-accent">ESPORTS</span>
+        </a>
+        <button class="nav-toggle" aria-label="Toggle navigation menu">☰</button>
+        <ul class="nav-links">
+            <li><a href="../index.html#home">Home</a></li>
+            <li><a href="../index.html#team">Team</a></li>
+            <li><a href="../index.html#matches">Matches</a></li>
+            <li><a href="../index.html#news">News</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="player-hero">
+        <div class="player-container">
+            <div class="player-header">
+                <div class="player-role-badge">Jungle</div>
+                <h1 class="player-gamertag">KKM</h1>
+                <p class="player-realname">Jungler</p>
+            </div>
+
+            <div class="player-stats-grid">
+                <div class="stat-card">
+                    <span class="stat-value" data-stat="kda">--</span>
+                    <span class="stat-label">KDA</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" data-stat="winrate">--%</span>
+                    <span class="stat-label">Win Rate</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" data-stat="games">--</span>
+                    <span class="stat-label">Games</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" data-stat="champions">--</span>
+                    <span class="stat-label">Champions</span>
+                </div>
+            </div>
+
+            <div class="player-content">
+                <div class="player-about">
+                    <h2 class="section-title">About <span class="accent">KKM</span></h2>
+                    <p class="player-bio">
+                        Still to edit.
+                    </p>
+                </div>
+
+                <div class="player-champions">
+                    <h2 class="section-title">Signature <span class="accent">Champions</span></h2>
+                    <div class="champion-list">
+                    </div>
+                </div>
+            </div>
+
+            <div class="player-social">
+                <h2 class="section-title">Follow <span class="accent">KKM</span></h2>
+                <div class="social-links">
+                    <a href="#" class="social-link" target="_blank">Twitter / X</a>
+                    <a href="#" class="social-link" target="_blank">Instagram</a>
+                    <a href="#" class="social-link" target="_blank">Twitch</a>
+                    <a href="#" class="social-link" target="_blank">YouTube</a>
+                </div>
+            </div>
+
+            <div class="player-back">
+                <a href="../index.html#team" class="btn btn-secondary">← Back to Team</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>ASCENSION</span><span class="accent">ESPORTS</span>
+            </div>
+            <p class="footer-copy">© 2026 Ascension Esports. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/player-stats.js"></script>
+    <script>
+        const playerManager = new PlayerStatsManager('kkm');
+        playerManager.init();
+    </script>
+</body>
+</html>

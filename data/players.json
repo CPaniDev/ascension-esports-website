@@ -1,0 +1,176 @@
+{
+    "al3xand3r": {
+        "id": "al3xand3r",
+        "name": "Al3xand3r",
+        "role": "Top",
+        "realName": "Top Laner",
+        "bio": "Al3xand3r dominates the top lane with mechanical precision and game sense.",
+        "stats": {
+            "totalGames": 0,
+            "wins": 0,
+            "totalKills": 0,
+            "totalDeaths": 0,
+            "totalAssists": 0,
+            "kda": 0,
+            "winRate": 0
+        },
+        "champions": [
+            {"name": "Gnar", "games": 0, "wins": 0},
+            {"name": "Camille", "games": 0, "wins": 0},
+            {"name": "K'Sante", "games": 0, "wins": 0}
+        ],
+        "matches": []
+    },
+    "kkm": {
+        "id": "kkm",
+        "name": "KKM",
+        "role": "Jungle",
+        "realName": "Jungler",
+        "bio": "KKM controls the jungle with strategic pathing and objective focus. His gank coordination sets the tempo for the entire team.",
+        "stats": {
+            "totalGames": 0,
+            "wins": 0,
+            "totalKills": 0,
+            "totalDeaths": 0,
+            "totalAssists": 0,
+            "kda": 0,
+            "winRate": 0
+        },
+        "champions": [
+            {"name": "Lee Sin", "games": 0, "wins": 0},
+            {"name": "Viego", "games": 0, "wins": 0},
+            {"name": "Morgana", "games": 0, "wins": 0}
+        ],
+        "matches": []
+    },
+    "arashi": {
+        "id": "arashi",
+        "name": "Arashi",
+        "role": "Mid",
+        "realName": "Mid Laner",
+        "bio": "Arashi rules the mid lane with mechanical skill and decisive roams. His ability to control teamfights makes him a constant threat.",
+        "stats": {
+            "totalGames": 0,
+            "wins": 0,
+            "totalKills": 0,
+            "totalDeaths": 0,
+            "totalAssists": 0,
+            "kda": 0,
+            "winRate": 0
+        },
+        "champions": [
+            {"name": "Akali", "games": 0, "wins": 0},
+            {"name": "Rumble", "games": 0, "wins": 0},
+            {"name": "Swain", "games": 0, "wins": 0}
+        ],
+        "matches": []
+    },
+    "coneglianum": {
+        "id": "coneglianum",
+        "name": "Coneglianum",
+        "role": "ADC",
+        "realName": "Bot Laner",
+        "bio": "Coneglianum delivers consistent damage from the bot lane with superior positioning and kiting. His late-game carry potential closes out crucial matches.",
+        "stats": {
+            "totalGames": 0,
+            "wins": 0,
+            "totalKills": 0,
+            "totalDeaths": 0,
+            "totalAssists": 0,
+            "kda": 0,
+            "winRate": 0
+        },
+        "champions": [
+            {"name": "Jinx", "games": 0, "wins": 0},
+            {"name": "Kai'Sa", "games": 0, "wins": 0},
+            {"name": "Ezreal", "games": 0, "wins": 0}
+        ],
+        "matches": []
+    },
+    "cronix": {
+        "id": "cronix",
+        "name": "Cronix",
+        "role": "Support",
+        "realName": "Support",
+        "bio": "Cronix provides support with vision control and engage potential.",
+        "stats": {
+            "totalGames": 0,
+            "wins": 0,
+            "totalKills": 0,
+            "totalDeaths": 0,
+            "totalAssists": 0,
+            "kda": 0,
+            "winRate": 0
+        },
+        "champions": [
+            {"name": "Rakan", "games": 0, "wins": 0},
+            {"name": "Nautilus", "games": 0, "wins": 0},
+            {"name": "Pyke", "games": 0, "wins": 0}
+        ],
+        "matches": []
+    },
+    "majima": {
+        "id": "majima",
+        "name": "Majima",
+        "role": "Mid",
+        "realName": "Mid Laner",
+        "bio": "Majima rules the mid lane with mechanical skill and decisive roams.",
+        "stats": {
+            "totalGames": 0,
+            "wins": 0,
+            "totalKills": 0,
+            "totalDeaths": 0,
+            "totalAssists": 0,
+            "kda": 0,
+            "winRate": 0
+        },
+        "champions": [
+            {"name": "Zed", "games": 0, "wins": 0},
+            {"name": "Yasuo", "games": 0, "wins": 0},
+            {"name": "Ahri", "games": 0, "wins": 0}
+        ],
+        "matches": []
+    },
+    "butanero": {
+        "id": "butanero",
+        "name": "Butanero",
+        "role": "Jungle",
+        "realName": "Jungler",
+        "bio": "Butanero controls the jungle with precision timing and objective focus.",
+        "stats": {
+            "totalGames": 0,
+            "wins": 0,
+            "totalKills": 0,
+            "totalDeaths": 0,
+            "totalAssists": 0,
+            "kda": 0,
+            "winRate": 0
+        },
+        "champions": [
+            {"name": "Master Yi", "games": 0, "wins": 0},
+            {"name": "Fiora", "games": 0, "wins": 0},
+            {"name": "Aatrox", "games": 0, "wins": 0}
+        ],
+        "matches": []
+    },
+    "7blacktears": {
+        "id": "7blacktears",
+        "name": "7 Black Tears",
+        "role": "Support",
+        "realName": "Support",
+        "bio": "Still to edit.",
+        "stats": {
+            "totalGames": 0,
+            "wins": 0,
+            "totalKills": 0,
+            "totalDeaths": 0,
+            "totalAssists": 0,
+            "kda": 0,
+            "winRate": 0
+        },
+        "champions": [
+            {"name": "TBD", "games": 0, "wins": 0}
+        ],
+        "matches": []
+    }
+}

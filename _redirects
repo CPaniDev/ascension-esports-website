@@ -1,0 +1,18 @@
+# Admin shortcuts
+/admin  /pages/admin-login.html
+/dashboard  /pages/admin-dashboard.html
+
+# Player shortcuts
+/player/al3xand3r  /pages/al3xand3r.html
+/player/kkm  /pages/kkm.html
+/player/arashi  /pages/arashi.html
+/player/coneglianum  /pages/coneglianum.html
+/player/cronix  /pages/cronix.html
+/player/majima  /pages/majima.html
+/player/butanero  /pages/butanero.html
+
+# News
+/news  /pages/news.html
+
+# 404 handling
+/*  /404.html  404

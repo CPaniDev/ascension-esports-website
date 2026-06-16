@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-ancestors 'none';">
+    <title>PLAYER_NAME - Ascension Esports</title>
+    <link rel="icon" type="image/png" href="../assets/images/logo.png" sizes="32x32">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/player.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="../index.html" class="logo">
+            <img src="../assets/images/logo.png" alt="Ascension Esports" class="logo-img">
+            <span class="logo-text">ASCENSION</span>
+            <span class="logo-accent">ESPORTS</span>
+        </a>
+        <button class="nav-toggle" aria-label="Toggle navigation menu">☰</button>
+        <ul class="nav-links">
+            <li><a href="../index.html#home">Home</a></li>
+            <li><a href="../index.html#team">Team</a></li>
+            <li><a href="../index.html#matches">Matches</a></li>
+            <li><a href="../index.html#news">News</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="player-hero">
+        <div class="player-container">
+            <div class="player-header">
+                <div class="player-role-badge">ROLE</div>
+                <h1 class="player-gamertag">PLAYER_TAG</h1>
+                <p class="player-realname">Real Name</p>
+            </div>
+
+            <div class="player-stats-grid">
+                <div class="stat-card">
+                    <span class="stat-value" data-stat="kda">--</span>
+                    <span class="stat-label">KDA</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" data-stat="winrate">--%</span>
+                    <span class="stat-label">Win Rate</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" data-stat="games">--</span>
+                    <span class="stat-label">Games</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" data-stat="champions">--</span>
+                    <span class="stat-label">Champions</span>
+                </div>
+            </div>
+
+            <div class="player-content">
+                <div class="player-about">
+                    <h2 class="section-title">About <span class="accent">PLAYER_TAG</span></h2>
+                    <p class="player-bio">
+                        Player bio goes here. Describe their playstyle, history, achievements, and what they bring to the team.
+                    </p>
+                </div>
+
+                <div class="player-champions">
+                    <h2 class="section-title">Signature <span class="accent">Champions</span></h2>
+                    <div class="champion-list">
+                        <!-- Champions will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="player-social">
+                <h2 class="section-title">Follow <span class="accent">PLAYER_TAG</span></h2>
+                <div class="social-links">
+                    <a href="#" class="social-link" target="_blank">Twitter / X</a>
+                    <a href="#" class="social-link" target="_blank">Instagram</a>
+                    <a href="#" class="social-link" target="_blank">Twitch</a>
+                    <a href="#" class="social-link" target="_blank">YouTube</a>
+                </div>
+            </div>
+
+            <!-- Add Match Form -->
+            <div class="add-match-section">
+                <h2 class="section-title">Add <span class="accent">Match</span></h2>
+                <form id="add-match-form" class="match-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="champion">Champion</label>
+                            <select id="champion" name="champion" required>
+                                <!-- Options populated by JS -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="result">Result</label>
+                            <select id="result" name="result" required>
+                                <option value="win">Win</option>
+                                <option value="loss">Loss</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="kills">Kills</label>
+                            <input type="number" id="kills" name="kills" min="0" value="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="deaths">Deaths</label>
+                            <input type="number" id="deaths" name="deaths" min="0" value="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="assists">Assists</label>
+                            <input type="number" id="assists" name="assists" min="0" value="0" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="match-date">Date</label>
+                        <input type="date" id="match-date" name="match-date" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Match</button>
+                </form>
+                <div id="match-feedback" class="match-feedback"></div>
+            </div>
+
+            <!-- Manage Champions Section -->
+            <div class="manage-champions-section">
+                <h2 class="section-title">Manage <span class="accent">Champions</span></h2>
+                <form id="add-champion-form" class="champion-form">
+                    <div class="form-group">
+                        <label for="new-champion">Champion Name</label>
+                        <input type="text" id="new-champion" name="new-champion" placeholder="Enter champion name" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Champion</button>
+                </form>
+                <div id="champion-feedback" class="champion-feedback"></div>
+                <div class="current-champions">
+                    <h3>Current Champions</h3>
+                    <div id="champion-management-list" class="champion-management-list">
+                        <!-- Champions will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="player-back">
+                <a href="../index.html#team" class="btn btn-secondary">← Back to Team</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>ASCENSION</span><span class="accent">ESPORTS</span>
+            </div>
+            <p class="footer-copy">© 2026 Ascension Esports. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/player-stats.js"></script>
+    <script>
+        // Initialize player stats
+        // Replace 'player_id' with the actual player ID from players.json
+        const playerManager = new PlayerStatsManager('player_id');
+        playerManager.init();
+    </script>
+</body>
+</html>

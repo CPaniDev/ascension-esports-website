@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-ancestors 'none';">
+    <title>Admin Backoffice - Ascension Esports</title>
+    <link rel="icon" type="image/png" href="../assets/images/logo.png" sizes="32x32">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/player.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="../index.html" class="logo">
+            <img src="../assets/images/logo.png" alt="Ascension Esports" class="logo-img">
+            <span class="logo-text">ASCENSION</span>
+            <span class="logo-accent">ESPORTS</span>
+        </a>
+        <button class="nav-toggle" aria-label="Toggle navigation menu">☰</button>
+        <ul class="nav-links">
+            <li><a href="#" id="admin-logout" class="btn btn-secondary">Logout</a></li>
+        </ul>
+    </nav>
+
+    <section class="player-hero">
+        <div class="player-container" style="max-width: 780px;">
+            <div class="player-header">
+                <h1 class="player-gamertag">Admin Panel</h1>
+                <p class="player-realname" id="admin-title">Enter match results for players</p>
+            </div>
+
+            <div class="add-match-section" style="padding: 1.5rem;">
+                <h2 class="section-title">Set Next Match</h2>
+                <form id="next-match-form" class="match-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="match-date">Date</label>
+                            <input type="date" id="match-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="match-time">Time</label>
+                            <input type="time" id="match-time" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="opponent-tag">Opponent Tag (abbreviation)</label>
+                            <input type="text" id="opponent-tag" required placeholder="e.g. XLG" maxlength="6" style="text-transform:uppercase;">
+                        </div>
+                        <div class="form-group">
+                            <label for="opponent">Opponent Full Name</label>
+                            <input type="text" id="opponent" required placeholder="e.g. Exlegends">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="opponent-logo">Opponent Logo</label>
+                        <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+                            <input type="url" id="opponent-logo-url" placeholder="Logo URL (optional)" style="flex:1;min-width:180px;">
+                            <span style="color:var(--text-muted);font-size:0.85rem;">or</span>
+                            <input type="file" id="opponent-logo-file" accept="image/*" style="display:none;">
+                            <button type="button" id="upload-opponent-logo-btn" class="btn btn-secondary" style="white-space:nowrap;">Upload Image</button>
+                            <span id="opponent-logo-filename" style="color:var(--text-muted);font-size:0.85rem;"></span>
+                        </div>
+                        <div style="margin-top:0.75rem;" id="opponent-logo-preview-wrap" hidden>
+                            <p style="font-size:0.8rem;color:var(--text-muted);margin:0 0 4px;">Preview:</p>
+                            <img id="opponent-logo-preview" src="" alt="" style="width:56px;height:56px;object-fit:contain;background:#1a2330;border-radius:50%;padding:4px;border:1px solid #1e2a35;">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stream-link">Stream Link</label>
+                        <input type="url" id="stream-link" placeholder="https://twitch.tv/...">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Match</button>
+                </form>
+                <div id="next-match-feedback" class="match-feedback"></div>
+            </div>
+
+            <div class="add-match-section" style="padding: 1.5rem;">
+                <h2 class="section-title">Publish News</h2>
+                <form id="news-form" class="match-form">
+                    <div class="form-group">
+                        <label for="news-date">Date</label>
+                        <input type="month" id="news-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="news-title">Title</label>
+                        <input type="text" id="news-title" required placeholder="News title" maxlength="100">
+                    </div>
+                    <div class="form-group">
+                        <label for="news-excerpt">Excerpt</label>
+                        <input type="text" id="news-excerpt" required placeholder="Short description" maxlength="200">
+                    </div>
+                    <div style="display: flex; gap: 1rem; align-items: center;">
+                        <button type="submit" class="btn btn-primary">Publish News</button>
+                        <button type="button" id="delete-last-news-btn" class="btn btn-danger" style="padding: 0.5rem 1rem; font-size: 0.9rem; letter-spacing: 1px; background: #dc3545; border-color: #dc3545; color: white; border: 2px solid transparent; cursor: pointer; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">Delete Last News</button>
+                    </div>
+                </form>
+                <div id="news-feedback" class="match-feedback"></div>
+            </div>
+
+            <div class="add-match-section" style="padding: 1.5rem; background: var(--bg-card); border: 1px solid var(--border); text-align: center;">
+                <h2 class="section-title">Auto Import from Screenshot</h2>
+                <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem;">
+                    Upload a Wild Rift match result screenshot to automatically extract player data.
+                </p>
+                <div style="display: flex; gap: 1rem; align-items: center; justify-content: center; flex-wrap: wrap;">
+                    <input type="file" id="screenshot-input" accept="image/*" style="display: none;">
+                    <button type="button" id="upload-screenshot-btn" class="btn btn-primary">Upload Screenshot</button>
+                    <span id="ocr-status" style="color: var(--text-muted); font-size: 0.9rem;"></span>
+                </div>
+            </div>
+
+            <div class="add-match-section" style="padding: 1.5rem;">
+                <h2 class="section-title" style="display: flex; justify-content: space-between; align-items: center;">
+                    Manual Match Entry
+                    <span style="font-size: 0.8rem; font-weight: 400; color: var(--text-muted);">Or enter manually below</span>
+                </h2>
+                <form id="admin-match-form" class="match-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="player-select">Player</label>
+                            <select id="player-select" required></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="champion-select">Champion</label>
+                            <input type="text" id="champion-select" required placeholder="Champion name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="result">Result</label>
+                            <select id="result" required><option value="win">Win</option><option value="loss">Loss</option></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="kills">Kills</label>
+                            <input type="number" id="kills" min="0" value="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="deaths">Deaths</label>
+                            <input type="number" id="deaths" min="0" value="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="assists">Assists</label>
+                            <input type="number" id="assists" min="0" value="0" required>
+                        </div>
+                    </div>             
+                    <button type="submit" class="btn btn-primary">Save Result</button>
+                </form>
+                <div id="admin-feedback" class="match-feedback"></div>
+            </div>
+
+            <div class="player-champions" style="background: var(--bg-card); border: 1px solid var(--border); padding: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h2 class="section-title" style="margin: 0;">Recent Updates</h2>
+                    <button type="button" id="delete-last-btn" class="btn btn-danger" style="padding: 0.5rem 1rem; font-size: 0.9rem; letter-spacing: 1px; background: #dc3545; border-color: #dc3545; color: white; border: 2px solid transparent; cursor: pointer; font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;">Delete Last Entry</button>
+                </div>
+                <div id="recent-updates"></div>
+            </div>
+
+            <div class="add-match-section" style="padding: 1.5rem; margin-top: 1rem;">
+                <h2 class="section-title">Data Backup & Recovery</h2>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button type="button" id="export-data-btn" class="btn btn-secondary">Export All Data (Backup)</button>
+                    <button type="button" id="publish-data-btn" class="btn btn-primary" style="background:var(--accent);color:var(--bg-primary);border:2px solid var(--accent);">Publish to All Devices</button>
+                    <button type="button" id="import-data-btn" class="btn btn-secondary" onclick="document.getElementById('import-file-input').click()">Import Data (Restore)</button>
+                    <input type="file" id="import-file-input" accept=".json" style="display: none;">
+                </div>
+                <div id="backup-feedback" style="margin-top: 0.5rem;"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="confirm-modal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000;">
+        <div class="modal-content" style="background: var(--bg-card); max-width: 600px; max-height: 80vh; margin: 5% auto; padding: 2rem; border-radius: 8px; border: 1px solid var(--border); overflow-y: auto;">
+            <h2 style="margin-top: 0;">Confirm Match Data</h2>
+            <div id="confirm-data" style="margin: 1rem 0; max-height: 55vh; overflow-y: auto;"></div>
+            <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+                <button id="confirm-cancel" class="btn btn-secondary">Incorrect</button>
+                <button id="confirm-save" class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let tesseractLib = null;
+        
+        async function loadTesseract() {
+            if (tesseractLib) {
+                console.log('Tesseract: using cached lib');
+                return tesseractLib;
+            }
+            
+            console.log('Tesseract: loading from CDN...');
+            document.getElementById('ocr-status').textContent = 'Loading OCR...';
+            
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = 'https://unpkg.com/tesseract.js@4.1.3/dist/tesseract.min.js';
+                script.onload = () => {
+                    console.log('Tesseract: script loaded');
+                    tesseractLib = Tesseract;
+                    resolve(Tesseract);
+                };
+                script.onerror = (e) => {
+                    console.error('Tesseract: load failed', e);
+                    reject(new Error('Failed'));
+                };
+                document.head.appendChild(script);
+                setTimeout(() => reject(new Error('Timeout')), 20000);
+            });
+        }
+
+        // Preload OCR library on page load
+        console.log('Tesseract: starting preload');
+        loadTesseract().then(() => console.log('Tesseract: preload done')).catch(e => console.error('Tesseract: preload failed', e));
+    </script>
+    <script src="../scripts/config.js"></script>
+    <script src="../scripts/security-utils.js"></script>
+    <script src="../scripts/player-stats.js"></script>
+    <script src="../scripts/admin.js"></script>
+    <script>
+        /* ── Opponent logo upload preview ── */
+        document.getElementById('upload-opponent-logo-btn').addEventListener('click', function() {
+            document.getElementById('opponent-logo-file').click();
+        });
+        document.getElementById('opponent-logo-file').addEventListener('change', function(e) {
+            var file = e.target.files[0];
+            if (!file) return;
+            document.getElementById('opponent-logo-filename').textContent = file.name;
+            var reader = new FileReader();
+            reader.onload = function(ev) {
+                document.getElementById('opponent-logo-preview').src = ev.target.result;
+                document.getElementById('opponent-logo-preview-wrap').hidden = false;
+                document.getElementById('opponent-logo-url').value = '';
+            };
+            reader.readAsDataURL(file);
+        });
+        document.getElementById('opponent-logo-url').addEventListener('input', function() {
+            var url = this.value.trim();
+            if (url) {
+                document.getElementById('opponent-logo-preview').src = url;
+                document.getElementById('opponent-logo-preview-wrap').hidden = false;
+                document.getElementById('opponent-logo-filename').textContent = '';
+                document.getElementById('opponent-logo-file').value = '';
+            } else {
+                document.getElementById('opponent-logo-preview-wrap').hidden = true;
+            }
+        });
+        document.getElementById('opponent-tag').addEventListener('input', function() {
+            this.value = this.value.toUpperCase();
+        });
+
+        /* ── Extended save: also persist opponent-tag and logo ── */
+        document.getElementById('next-match-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var tag  = document.getElementById('opponent-tag').value.trim().toUpperCase();
+            var name = document.getElementById('opponent').value.trim();
+            var url  = document.getElementById('opponent-logo-url').value.trim();
+            var fileInput = document.getElementById('opponent-logo-file');
+            var file = fileInput.files && fileInput.files[0];
+
+            function saveTagAndName() {
+                if (tag)  localStorage.setItem('mc_opponent_tag', tag);
+                if (name) localStorage.setItem('mc_opponent_name', name);
+            }
+
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(ev) {
+                    localStorage.setItem('mc_opponent_logo', ev.target.result);
+                    saveTagAndName();
+                };
+                reader.readAsDataURL(file);
+            } else if (url) {
+                localStorage.setItem('mc_opponent_logo', url);
+                saveTagAndName();
+            } else {
+                localStorage.removeItem('mc_opponent_logo');
+                saveTagAndName();
+            }
+        });
+    </script>
+    <script>
+        const NICKNAME_MAPPING = {
+            'WoL Al3xanBob3r': 'al3xand3r',
+            'Wol Al3xanBob': 'al3xand3r',
+            'Al3xanBob': 'al3xand3r',
+            'Al3xand3r': 'al3xand3r',
+            'al3xanbob': 'al3xand3r',
+            'KKM': 'kkm',
+            'ASC Arashi': 'arashi',
+            'AsC Arashi': 'arashi',
+            'Arashi': 'arashi',
+            'arashi': 'arashi',
+            'ASC Coneglianum': 'coneglianum',
+            'ASCConeglianum': 'coneglianum',
+            'Coneglianum': 'coneglianum',
+            'coneglianum': 'coneglianum',
+            'NNE Cronix': 'cronix',
+            'Cronix': 'cronix',
+            'cronix': 'cronix',
+            '74 Majima': 'majima',
+            'Majima': 'majima',
+            'majima': 'majima',
+            'GARMAÑOLAAA': 'butanero',
+            'Butanero': 'butanero',
+            'butanero': 'butanero'
+        };
+
+        const PLAYER_DB_NAMES = ['al3xand3r', 'kkm', 'arashi', 'coneglianum', 'cronix', 'majima', 'butanero'];
+
+        const CHAMPION_ALIASES = {
+            // Attack Damage Carries
+            'jinx': 'Jinx', 'kai\'sa': 'Kai\'Sa', 'kaisa': 'Kai\'Sa', 'ezreal': 'Ezreal',
+            ' Lucian': 'Lucian', 'tristana': 'Tristana', 'ashe': 'Ashe', 'trundle': 'Trundle',
+            'caitlyn': 'Caitlyn', 'kog\'maw': 'Kog\'Maw', 'kogmaw': 'Kog\'Maw', 'jhin': 'Jhin',
+            'draven': 'Draven', 'samira': 'Samira', 'nasus': 'Nasus', 'vayne': 'Vayne',
+            // Ability Power Carries
+            'ahri': 'Ahri', 'zed': 'Zed', 'yasuo': 'Yasuo', 'lee sin': 'Lee Sin', 'leesin': 'Lee Sin',
+            'leBlanc': 'LeBlanc', 'leblanc': 'LeBlanc', 'graves': 'Graves', 'kha\'zix': 'Kha\'Zix', 'khazix': 'Kha\'Zix',
+            'darius': 'Darius', 'fiora': 'Fiora', 'camille': 'Camille',
+            'rakan': 'Rakan', 'nautilus': 'Nautilus', 'pyke': 'Pyke',
+            'sylas': 'Sylas', 'orianna': 'Orianna', 'viego': 'Viego',
+            'morgana': 'Morgana', 'aurora': 'Aurora', 'evelynn': 'Evelynn',
+            'corki': 'Corki', 'galio': 'Galio', 'fizz': 'Fizz', 'annie': 'Annie',
+            'ekko': 'Ekko', 'diana': 'Diana', 'fiddlesticks': 'Fiddlesticks',
+            'aurelionsol': 'Aurelion Sol', 'drmundo': 'Dr. Mundo', 'bard': 'Bard', 'amumu': 'Amumu', 'blitzcrank': 'Blitzcrank',
+            'akshan': 'Akshan', 'brand': 'Brand', 'alistar': 'Alistar',
+            'ambessa': 'Ambessa', 'naafiri': 'Naafiri', 'ksante': 'Ksante',
+            // More champions
+            'zeri': 'Zeri', 'lux': 'Lux', 'neeko': 'Neeko', 'neek': 'Neeko',
+            'seraphine': 'Seraphine', 'sera': 'Seraphine', 'sona': 'Sona', 'soraka': 'Soraka',
+            'nami': 'Nami', 'lulu': 'Lulu', 'janna': 'Janna', 'karma': 'Karma',
+            'braum': 'Braum', 'leona': 'Leona', 'thresh': 'Thresh', 'rell': 'Rell',
+            'poppy': 'Poppy', 'ornn': 'Ornn', 'sejuani': 'Sejuani', 'gragas': 'Gragas',
+            'nocturne': 'Nocturne', 'noct': 'Nocturne', 'udyr': 'Udyr', 'xin zhao': 'Xin Zhao',
+            'wukong': 'Wukong', 'vi': 'Vi', 'jarvan': 'Jarvan', 'pantheon': 'Pantheon',
+            'renekton': 'Renekton', 'renek': 'Renekton', 'gnar': 'Gnar', 'malphite': 'Malphite',
+            'maokai': 'Maokai', 'chogath': 'Cho\'Gath', 'singed': 'Singed', 'nasoro': 'NaSoro'
+        };
+
+        const CHAMPION_KEYWORDS = ['jinx', 'kaisa', 'ezreal', 'ahri', 'zed', 'yasuo', 'leesin', 'lee', 'graves', 'khazix', 'darius', 'fiora', 'camille', 'rakan', 'nautilus', 'pyke', 'sylas', 'orianna', 'viego', 'morgana', 'aurora', 'evelynn', 'corki', 'galio', 'fizz', 'annie', 'ekko', 'diana', 'fiddlesticks', 'ashe', 'aurelionsol', 'drmundo', 'bard', 'amumu', 'blitzcrank', 'akshan', 'brand', 'alistar', 'draven', 'ambessa'];
+
+        function normalizeName(name) {
+            return name.toLowerCase().replace(/[^a-z0-9]/g, '');
+        }
+
+        function fuzzyMatch(input, target, minScore = 0.6) {
+            const a = normalizeName(input);
+            const b = normalizeName(target);
+            if (a.includes(b) || b.includes(a)) return true;
+            if (a.length < 3 || b.length < 3) return false;
+            
+            let matches = 0;
+            for (const char of b) {
+                if (a.includes(char)) matches++;
+            }
+            return (matches / b.length) >= minScore;
+        }
+
+        function findMatch(name, dbNames) {
+            const normalized = normalizeName(name);
+            for (const dbName of dbNames) {
+                const dbNormalized = normalizeName(dbName);
+                if (normalized === dbNormalized) return dbName;
+                if (normalized.includes(dbNormalized) || dbNormalized.includes(normalized) && normalized.length >= 3) return dbName;
+                if (fuzzyMatch(name, dbName, 0.5)) return dbName;
+            }
+            return null;
+        }
+
+        function findPlayerId(ingameName) {
+            for (const [key, value] of Object.entries(NICKNAME_MAPPING)) {
+                if (fuzzyMatch(ingameName, key, 0.4)) return value;
+            }
+            const match = findMatch(ingameName, PLAYER_DB_NAMES);
+            return match;
+        }
+
+        function normalizeChampion(name) {
+            const lower = name.toLowerCase().trim();
+            return CHAMPION_ALIASES[lower] || (name.charAt(0).toUpperCase() + name.slice(1).toLowerCase());
+        }
+
+        function parseResult(text) {
+            const lower = text.toLowerCase();
+            if (lower.includes('win') || lower.includes('victory') || lower.includes('v')) return 'win';
+            if (lower.includes('loss') || lower.includes('defeat') || lower.includes('d')) return 'loss';
+            return null;
+        }
+
+        function populateAndConfirm(matches) {
+            const modal = document.getElementById('confirm-modal');
+            const dataDiv = document.getElementById('confirm-data');
+            
+            const validMatches = matches.filter(m => m.playerId && m.playerId !== 'unknown');
+            
+            if (validMatches.length === 0) {
+                admin.showFeedback('admin-feedback', 'No valid matches to save', 'error');
+                return;
+            }
+
+            const championsList = Object.keys(CHAMPION_ALIASES).map(k => CHAMPION_ALIASES[k]).filter((v, i, a) => a.indexOf(v) === i).sort();
+            
+            let html = '';
+            validMatches.forEach((m, i) => {
+                const champOptions = championsList.map(c => `<option value="${c}" ${m.champion === c ? 'selected' : ''}>${c}</option>`).join('');
+                html += `<div style="padding: 0.75rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+                    <div>
+                        <strong>${m.ingameName}</strong> → ${m.playerId}<br>
+                        KDA: ${m.kills}/${m.deaths}/${m.assists} | <span style="color: ${m.result === 'win' ? '#4ade80' : '#f87171'};">${m.result.toUpperCase()}</span>
+                    </div>
+                    <div>
+                        <label>Champion: 
+                            <select class="champ-select" data-index="${i}" style="padding: 0.25rem;">
+                                <option value="">-- Select --</option>
+                                ${champOptions}
+                            </select>
+                        </label>
+                    </div>
+                </div>`;
+            });
+            
+            dataDiv.innerHTML = html;
+            
+            validMatches.forEach((m, i) => {
+                const select = dataDiv.querySelector(`select[data-index="${i}"]`);
+                if (m.champion) select.value = m.champion;
+            });
+            
+            modal.style.display = 'block';
+            
+            window.pendingMatchData = validMatches;
+        }
+
+        async function waitForTesseract(maxAttempts = 10) {
+            for (let i = 0; i < maxAttempts; i++) {
+                if (typeof Tesseract !== 'undefined') return true;
+                await new Promise(r => setTimeout(r, 500));
+            }
+            return false;
+        }
+
+        function cleanPlayerName(name) {
+            const cleaned = name.replace(/[^a-zA-Z0-9áéíóúñ]/g, ' ').replace(/\s+/g, ' ').trim();
+            const parts = cleaned.split(' ').filter(p => p.length >= 2);
+            return parts.join(' ');
+        }
+
+        function findPlayerFuzzy(line) {
+            const lower = line.toLowerCase();
+            
+            const patterns = [
+                { pattern: /al3x/, id: 'al3xand3r' },
+                { pattern: /alsx/, id: 'al3xand3r' },
+                { pattern: /kkm\b/, id: 'kkm' },
+                { pattern: /wol[ \d]/, id: 'arashi' },
+                { pattern: /arashi/, id: 'arashi' },
+                { pattern: /asc[ a]/, id: 'arashi' },
+                { pattern: /ashi\b/, id: 'arashi' },
+                { pattern: /amshi/, id: 'arashi' },
+                { pattern: /cone/, id: 'coneglianum' },
+                { pattern: /cronix/, id: 'cronix' },
+                { pattern: /nne\b/, id: 'cronix' },
+                { pattern: /majima/, id: 'majima' },
+                { pattern: /butanero/, id: 'butanero' },
+                { pattern: /garma/, id: 'butanero' },
+            ];
+            
+            for (const p of patterns) {
+                if (p.pattern.test(lower)) {
+                    return { id: p.id, raw: p.pattern.toString() };
+                }
+            }
+            return null;
+        }
+
+function extractKDAFromLine(line) {
+            // Get all numbers in the line
+            const nums = line.match(/\d+/g);
+            if (!nums || nums.length < 3) return null;
+            
+            // Skip first 1-2 numbers (level + OCR garbage at start), find reasonable KDA
+            // Look for K/D/A typically in positions 1-3 after level
+            for (let i = 1; i <= Math.min(3, nums.length - 3); i++) {
+                const k = parseInt(nums[i]);
+                const d = parseInt(nums[i+1]);
+                const a = parseInt(nums[i+2]);
+                if (k >= 0 && k <= 15 && d >= 0 && d <= 15 && a >= 0 && a <= 15) {
+                    return { kills: k, deaths: d, assists: a };
+                }
+            }
+            return null;
+        }
+
+        async function processScreenshot(file) {
+            const status = document.getElementById('ocr-status');
+            console.log('processScreenshot: called', file.name);
+            
+            status.textContent = 'Loading OCR...';
+            
+            try {
+                console.log('processScreenshot: calling loadTesseract()');
+                const Tesseract = await loadTesseract();
+                console.log('processScreenshot: Tesseract ready');
+                
+                status.textContent = 'Processing image with OCR...';
+                
+                console.log('processScreenshot: calling recognize()');
+                const result = await Tesseract.recognize(file, 'eng');
+                console.log('processScreenshot: recognize done');
+                
+                const text = result.data.text;
+                console.log('processScreenshot: raw text:', text);
+                status.textContent = 'Parsing extracted text...';
+                
+                const isVictory = text.toLowerCase().includes('victory');
+                const isDefeat = text.toLowerCase().includes('defeat');
+                const matchResult = isVictory ? 'win' : (isDefeat ? 'loss' : 'win');
+                console.log('processScreenshot: match result:', matchResult);
+                
+                const extracted = { rawText: text, matches: [] };
+                
+                const rawLines = text.split('\n').filter(l => l.length > 3);
+                console.log('processScreenshot: lines:', rawLines);
+                
+for (const line of rawLines) {
+                    const player = findPlayerFuzzy(line);
+                    if (!player) continue;
+                    
+                    console.log('processScreenshot: checking line:', line, '-> player:', player);
+                    
+                    const kda = extractKDAFromLine(line);
+                    if (!kda) continue;
+                    
+                    console.log('processScreenshot: found player:', player, 'KDA:', kda);
+                    
+                    extracted.matches.push({
+                        playerId: player.id,
+                        ingameName: player.raw,
+                        champion: '',
+                        kills: kda.kills,
+                        deaths: kda.deaths,
+                        assists: kda.assists,
+                        result: matchResult,
+                        confidence: 0.5
+                    });
+                }
+                
+                console.log('processScreenshot: extracted matches:', extracted.matches);
+                
+                // Deduplicate by playerId
+                const seen = new Set();
+                const unique = [];
+                for (const m of extracted.matches) {
+                    if (!seen.has(m.playerId)) {
+                        seen.add(m.playerId);
+                        unique.push(m);
+                    }
+                }
+                extracted.matches = unique;
+                
+                console.log('processScreenshot: unique matches:', extracted.matches);
+                status.textContent = `Found ${extracted.matches.length} potential match(es)`;
+                
+                if (extracted.matches.length > 0) {
+                    populateAndConfirm(extracted.matches);
+                }
+                
+            } catch (err) {
+                console.error('OCR Error:', err);
+                status.textContent = 'Error: ' + err.message;
+            }
+        }
+
+        document.getElementById('confirm-cancel').addEventListener('click', () => {
+            document.getElementById('confirm-modal').style.display = 'none';
+            window.pendingMatchData = null;
+            admin.showFeedback('admin-feedback', 'Match data discarded', 'error');
+        });
+
+        document.getElementById('confirm-save').addEventListener('click', () => {
+            if (!window.pendingMatchData || window.pendingMatchData.length === 0) return;
+            
+            const dataDiv = document.getElementById('confirm-data');
+            const selects = dataDiv.querySelectorAll('.champ-select');
+            
+            selects.forEach((select, i) => {
+                if (window.pendingMatchData[i]) {
+                    window.pendingMatchData[i].champion = select.value;
+                }
+            });
+            
+            const validWithChamp = window.pendingMatchData.filter(m => m.champion);
+            
+            if (validWithChamp.length === 0) {
+                admin.showFeedback('admin-feedback', 'Please select a champion for at least one player', 'error');
+                return;
+            }
+            
+            for (const match of validWithChamp) {
+                admin.saveMatch({
+                    playerId: match.playerId,
+                    champion: match.champion,
+                    result: match.result,
+                    kills: match.kills || 0,
+                    deaths: match.deaths || 0,
+                    assists: match.assists || 0
+                });
+            }
+            
+            document.getElementById('confirm-modal').style.display = 'none';
+            admin.showFeedback('admin-feedback', `Saved ${validWithChamp.length} match(es)`, 'success');
+            window.pendingMatchData = null;
+        });
+
+        document.getElementById('upload-screenshot-btn').addEventListener('click', () => {
+            document.getElementById('screenshot-input').click();
+        });
+
+        document.getElementById('screenshot-input').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) processScreenshot(file);
+        });
+    </script>
+</body>
+</html>

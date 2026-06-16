@@ -1,0 +1,70 @@
+/* Ascension Esports - Social Icons Styles */
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 16px;
+}
+
+.social-icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.social-icon-link:hover {
+    transform: translateY(-4px);
+    opacity: 0.85;
+}
+
+.social-icon-link:active {
+    transform: translateY(-2px);
+}
+
+.social-icon-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+/* Larger icons for footer */
+.footer .social-icon-img {
+    width: 28px;
+    height: 28px;
+}
+
+/* Smaller icons for header */
+.header .social-icon-img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Social icons container variants */
+.social-icons.justify-center {
+    justify-content: center;
+}
+
+.social-icons.justify-start {
+    justify-content: flex-start;
+}
+
+.social-icons.justify-end {
+    justify-content: flex-end;
+}
+
+/* Dark theme support */
+.social-icon-link {
+    filter: brightness(1);
+    transition: filter 0.3s ease;
+}
+
+.social-icon-link:hover {
+    filter: brightness(1.2);
+}

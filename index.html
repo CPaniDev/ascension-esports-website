@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-ancestors 'none';">
+    <title>Ascension Esports</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.png" sizes="32x32">
+    <meta name="description" content="Ascension Esports — League of Legends: Wild Rift team competing in the Italian Competitive League.">
+    <meta property="og:title" content="Ascension Esports">
+    <meta property="og:description" content="League of Legends: Wild Rift team competing in the Italian Competitive League.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ascensionesports.gg">
+    <meta property="og:image" content="https://ascensionesports.gg/assets/images/logo.png">
+    <meta property="og:site_name" content="Ascension Esports">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ascension Esports">
+    <meta name="twitter:description" content="League of Legends: Wild Rift team competing in the Italian Competitive League.">
+    <meta name="twitter:image" content="https://ascensionesports.gg/assets/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/social-icons.css">
+
+    <style>
+        html { overflow-y: scroll; }
+        /* ── Match Card ── */
+        .mc-game-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 5px 14px;
+            margin: 0 auto 1.5rem;
+        }
+        .mc-game-badge span {
+            font-size: 0.68rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #5a6a78;
+            font-weight: 600;
+        }
+        .mc-game-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #00c8ff;
+        }
+        .mc-card {
+            background: #0e1217;
+            border: 1px solid #1e2a35;
+            border-radius: 16px;
+            overflow: hidden;
+            max-width: 860px;
+            margin: 0 auto;
+            min-height: 340px;
+        }
+        .mc-top-bar {
+            background: #00c8ff;
+            padding: 6px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .mc-top-bar span {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            color: #031a22;
+        }
+        .mc-live-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #031a22;
+            animation: mc-pulse 1.4s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+        @keyframes mc-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .mc-body {
+            padding: 2rem 2.5rem;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .mc-team {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .mc-team-logo {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 0.05em;
+            border: 2px solid #1e2a35;
+        }
+        .mc-team-logo--asc {
+            background: #0a1f2e;
+            color: #00c8ff;
+            border-color: rgba(0,200,255,0.25);
+        }
+        .mc-team-logo--xlg {
+            background: #1a0a0a;
+            color: #ff6b35;
+            border-color: rgba(255,107,53,0.25);
+        }
+        .mc-team-abbr {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.2rem;
+            letter-spacing: 0.1em;
+            line-height: 1;
+        }
+        .mc-team-abbr--asc { color: #00c8ff; }
+        .mc-team-abbr--xlg { color: #ffffff; }
+        .mc-team-full {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #5a6a78;
+            font-weight: 500;
+        }
+        .mc-vs-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .mc-vs-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1.5px solid #1e2a35;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            color: #5a6a78;
+        }
+        .mc-divider {
+            border: none;
+            border-top: 1px solid #1a2330;
+            margin: 0 2.5rem;
+        }
+        .mc-footer {
+            padding: 1.25rem 2.5rem 1.75rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            align-items: center;
+        }
+        .mc-info-label {
+            font-size: 0.62rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #3a4a58;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .mc-info-value {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.08em;
+            color: #c8d8e4;
+        }
+        .mc-info-value--muted {
+            color: #5a6a78;
+            font-size: 0.82rem;
+        }
+        .mc-countdown-row {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .mc-cd-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+        }
+        .mc-cd-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: #00c8ff;
+            line-height: 1;
+            min-width: 38px;
+            text-align: center;
+            background: #0a1620;
+            border: 1px solid #1e2a35;
+            border-radius: 6px;
+            padding: 4px 6px;
+            transition: color 0.3s;
+        }
+        .mc-cd-num.live { color: #ff6b35; }
+        .mc-cd-label {
+            font-size: 0.55rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #3a4a58;
+            font-weight: 600;
+        }
+        .mc-cd-sep {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: #2a3a48;
+            padding-top: 4px;
+        }
+        .mc-watch-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            background: transparent;
+            border: 1.5px solid rgba(0,200,255,0.25);
+            color: #00c8ff;
+            border-radius: 8px;
+            padding: 10px 18px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.12em;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.15s, border-color 0.15s;
+            width: 100%;
+        }
+        .mc-watch-btn:hover {
+            background: rgba(0,200,255,0.08);
+            border-color: rgba(0,200,255,0.5);
+        }
+        .mc-watch-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        /* Watch btn icon — inline SVG fallback if no icon font */
+        .mc-watch-icon {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+        }
+        @media (max-width: 600px) {
+            .mc-body {
+                padding: 1.5rem 1.25rem;
+                gap: 0.75rem;
+            }
+            .mc-footer {
+                grid-template-columns: 1fr;
+                padding: 1rem 1.25rem 1.5rem;
+                gap: 1rem;
+                text-align: center;
+            }
+            .mc-countdown-row { justify-content: center; }
+            .mc-watch-btn { width: auto; }
+            .mc-watch-wrap { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="assets/images/logo.png" alt="Ascension Esports logo" class="logo-img" loading="lazy">
+            <span class="logo-text">ASCENSION</span>
+            <span class="logo-accent">ESPORTS</span>
+        </a>
+        <button class="nav-toggle" aria-label="Toggle navigation menu">☰</button>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#matches">Matches</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="pages/admin-login.html" class="btn btn-secondary admin-nav-btn">Admin Backoffice</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">ASCENSION<span class="accent">ESPORTS</span></h1>
+            <p class="hero-subtitle">Be the next legend. Ascend with us.</p>
+            <p class="hero-game">League of Legends: Wild Rift</p>
+            <div class="hero-buttons">
+                <a href="#team" class="btn btn-primary">Meet the Team</a>
+                <a href="#matches" class="btn btn-secondary">View Matches</a>
+            </div>
+        </div>
+        <div class="hero-graphics">
+            <div class="rift-glow"></div>
+        </div>
+    </section>
+
+    <section id="team" class="team">
+        <h2 class="section-title">Our Main <span class="accent">Roster</span></h2>
+        <div class="team-grid">
+            <a href="pages/al3xand3r.html" class="player-card">
+                <div class="player-card-image base" style="background-image: url('assets/players/al3xand3r.png');"></div>
+                <div class="player-card-image hover" style="background-image: url('assets/players/al3xand3r-hover.png');"></div>
+                <div class="player-role">Top</div>
+                <div class="player-name">Al3xand3r</div>
+                <div class="player-handle">Top Laner</div>
+            </a>
+            <a href="pages/kkm.html" class="player-card">
+                <div class="player-card-image base" style="background-image: url('assets/players/kkm.png');"></div>
+                <div class="player-card-image hover" style="background-image: url('assets/players/kkm-hover.png');"></div>
+                <div class="player-role">Jungle</div>
+                <div class="player-name">KKM</div>
+                <div class="player-handle">Jungler</div>
+            </a>
+            <a href="pages/arashi.html" class="player-card">
+                <div class="player-card-image base" style="background-image: url('assets/players/arashi.png');"></div>
+                <div class="player-card-image hover" style="background-image: url('assets/players/arashi-hover.png');"></div>
+                <div class="player-role">Mid</div>
+                <div class="player-name">Arashi</div>
+                <div class="player-handle">Mid Laner</div>
+            </a>
+            <a href="pages/coneglianum.html" class="player-card">
+                <div class="player-card-image base" style="background-image: url('assets/players/coneglianum.png');"></div>
+                <div class="player-card-image hover" style="background-image: url('assets/players/coneglianum-hover.png');"></div>
+                <div class="player-role">ADC</div>
+                <div class="player-name">Coneglianum</div>
+                <div class="player-handle">Bot Laner</div>
+            </a>
+            <a href="pages/7blacktears.html" class="player-card substitute">
+                <div class="player-role">Support</div>
+                <div class="player-name">7 Black Tears</div>
+                <div class="player-handle">Support</div>
+            </a>
+            <a href="pages/butanero.html" class="player-card substitute">
+                <div class="player-card-image base" style="background-image: url('assets/players/butanero.png');"></div>
+                <div class="player-card-image hover" style="background-image: url('assets/players/butanero-hover.png');"></div>
+                <div class="player-role">Sub</div>
+                <div class="player-name">Butanero</div>
+                <div class="player-handle">Jungler</div>
+            </a>
+            <a href="pages/majima.html" class="player-card substitute">
+                <div class="player-card-image base" style="background-image: url('assets/players/majima.png');"></div>
+                <div class="player-card-image hover" style="background-image: url('assets/players/majima-hover.png');"></div>
+                <div class="player-role">Sub</div>
+                <div class="player-name">Majima</div>
+                <div class="player-handle">Mid Laner</div>
+            </a>
+            <a href="pages/hell.html" class="player-card substitute">
+                <div class="player-role">Sub</div>
+                <div class="player-name">Hell</div>
+                <div class="player-handle">Jungler</div>
+            </a>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 3rem;">Gakuen <span class="candidates-text">Candidates</span></h2>
+        <div class="team-grid">
+            <div class="player-card substitute gakuen">
+                <div class="player-role">Top</div>
+                <div class="player-name">TBD</div>
+            </div>
+            <div class="player-card substitute gakuen">
+                <div class="player-role">Jungle</div>
+                <div class="player-name">TBD</div>
+            </div>
+            <div class="player-card substitute gakuen">
+                <div class="player-role">Mid</div>
+                <div class="player-name">Nezuko</div>
+            </div>
+            <div class="player-card substitute gakuen">
+                <div class="player-role">ADC</div>
+                <div class="player-name">TBD</div>
+            </div>
+            <div class="player-card substitute gakuen">
+                <div class="player-role">Support</div>
+                <div class="player-name">TBD</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         MATCHES SECTION — new match card design
+    ════════════════════════════════════════════ -->
+    <section id="matches" class="matches">
+        <h2 class="section-title">Upcoming <span class="accent">Match</span></h2>
+
+        <div style="display:flex;justify-content:center;">
+            <div class="mc-game-badge">
+                <div class="mc-game-dot"></div>
+                <span>League of Legends: Wild Rift</span>
+            </div>
+        </div>
+
+        <div class="mc-card">
+            <div class="mc-top-bar">
+                <div class="mc-live-dot"></div>
+                <span>ITALIAN COMPETITIVE LEAGUE — STAGIONE 2026</span>
+            </div>
+
+            <div class="mc-body">
+                <!-- Team ASC -->
+                <div class="mc-team">
+                    <div class="mc-team-logo mc-team-logo--asc" style="background:#0a1f2e;border-color:rgba(0,200,255,0.25);overflow:hidden;padding:0;">
+                        <img src="assets/images/new_logo.png" alt="Ascension Esports team logo" loading="lazy" style="width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 4px rgba(0,200,255,0.4));">
+                    </div>
+                    <div class="mc-team-abbr mc-team-abbr--asc">ASC</div>
+                    <div class="mc-team-full">Ascension Esports</div>
+                </div>
+
+                <!-- VS -->
+                <div class="mc-vs-col">
+                    <div class="mc-vs-circle">VS</div>
+                </div>
+
+                <!-- Team Opponent (dynamic) -->
+                <div class="mc-team" id="mc-opponent-team">
+                    <div class="mc-team-logo mc-team-logo--xlg" id="mc-opp-logo-wrap">
+                        <span id="mc-opp-logo-initials">XLG</span>
+                    </div>
+                    <div class="mc-team-abbr mc-team-abbr--xlg" id="mc-opp-tag">XLG</div>
+                    <div class="mc-team-full" id="mc-opp-name">Exlegends</div>
+                </div>
+            </div>
+
+            <hr class="mc-divider">
+
+            <div class="mc-footer">
+                <!-- Date / time -->
+                <div>
+                    <div class="mc-info-label">Data &amp; Ora</div>
+                    <div class="mc-info-value" id="mc-date-display">TBD</div>
+                    <div class="mc-info-value mc-info-value--muted" id="mc-time-display">--:--</div>
+                </div>
+
+                <!-- Countdown -->
+                <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+                    <div class="mc-info-label">INIZIA TRA</div>
+                    <div class="mc-countdown-row">
+                        <div class="mc-cd-unit">
+                            <div class="mc-cd-num" id="mc-cd-h">00</div>
+                            <div class="mc-cd-label">ore</div>
+                        </div>
+                        <div class="mc-cd-sep">:</div>
+                        <div class="mc-cd-unit">
+                            <div class="mc-cd-num" id="mc-cd-m">00</div>
+                            <div class="mc-cd-label">min</div>
+                        </div>
+                        <div class="mc-cd-sep">:</div>
+                        <div class="mc-cd-unit">
+                            <div class="mc-cd-num" id="mc-cd-s">00</div>
+                            <div class="mc-cd-label">sec</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Watch button -->
+                <div class="mc-watch-wrap">
+                    <a href="javascript:void(0)" class="mc-watch-btn" id="mc-watch-link">
+                        <svg class="mc-watch-icon" viewBox="0 0 16 16" aria-hidden="true">
+                            <path d="M6 3.5L12.5 8 6 12.5V3.5z"/>
+                        </svg>
+                        WATCH STREAM
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ═══════════════════════════════════════════ -->
+
+    <section id="news" class="news">
+        <h2 class="section-title">Latest <span class="accent">News</span></h2>
+        <div class="news-grid" id="news-container">
+            <article class="news-card">
+                <div class="news-date">March 2026</div>
+                <h3 class="news-title">Ascension Esports is Born</h3>
+                <p class="news-excerpt">We're excited to announce the formation of Ascension Esports, a Wild Rift team ready to compete at the highest level.</p>
+            </article>
+        </div>
+        <div style="text-align: center; margin-top: 1.5rem;">
+            <a href="pages/news.html" class="btn btn-secondary">View All News</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>ASCENSION</span><span class="accent">ESPORTS</span>
+            </div>
+            <div class="footer-links">
+                <a href="pages/bot.html">ASC | Assistant</a>
+            </div>
+            <div class="footer-social" id="social-icons-container">
+                <!-- Social icons will be automatically rendered here -->
+            </div>
+            <p class="footer-copy">© 2026 Ascension Esports. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/social-icons.js"></script>
+
+    <script>
+        /* ── Match countdown ── */
+        var COUNTDOWN_TARGET = null;
+
+        function updateCountdownTarget(dateStr, timeStr) {
+            if (dateStr) {
+                try {
+                    var dp = dateStr.split('-');
+                    var tp = (timeStr || '00:00').split(':');
+                    COUNTDOWN_TARGET = new Date(
+                        parseInt(dp[0], 10),
+                        parseInt(dp[1], 10) - 1,
+                        parseInt(dp[2], 10),
+                        parseInt(tp[0], 10),
+                        parseInt(tp[1], 10)
+                    );
+                } catch (_) { COUNTDOWN_TARGET = null; }
+            }
+        }
+
+        (function () {
+            var hasMatch = false;
+
+            function pad(n) { return String(n).padStart(2, '0'); }
+
+            function tick() {
+                var hEl  = document.getElementById('mc-cd-h');
+                var mEl  = document.getElementById('mc-cd-m');
+                var sEl  = document.getElementById('mc-cd-s');
+                if (!hEl) return;
+
+                if (!COUNTDOWN_TARGET) {
+                    hEl.textContent = '--';
+                    mEl.textContent = '--';
+                    sEl.textContent = '--';
+                    return;
+                }
+
+                var now  = new Date();
+                var diff = COUNTDOWN_TARGET - now;
+
+                if (diff <= 0) {
+                    hEl.textContent = '00';
+                    mEl.textContent = '00';
+                    sEl.textContent = '00';
+                    hEl.classList.add('live');
+                    mEl.classList.add('live');
+                    sEl.classList.add('live');
+                    return;
+                }
+
+                var totalSec = Math.floor(diff / 1000);
+                hEl.textContent = pad(Math.floor(totalSec / 3600));
+                mEl.textContent = pad(Math.floor((totalSec % 3600) / 60));
+                sEl.textContent = pad(totalSec % 60);
+            }
+
+            tick();
+            setInterval(tick, 1000);
+        })();
+
+        /* ── Load opponent data & stream link ── */
+        (function () {
+            function applyOpponent(tag, name, logo) {
+                var tagEl  = document.getElementById('mc-opp-tag');
+                var nameEl = document.getElementById('mc-opp-name');
+                var wrapEl = document.getElementById('mc-opp-logo-wrap');
+                var initEl = document.getElementById('mc-opp-logo-initials');
+                if (tag  && tagEl)  tagEl.textContent  = tag;
+                if (name && nameEl) nameEl.textContent = name;
+                if (logo && wrapEl) {
+                    var img = document.createElement('img');
+                    img.src = logo;
+                    img.alt = tag || 'Opponent';
+                    img.style.cssText = 'width:80%;height:80%;object-fit:contain;';
+                    if (initEl) initEl.style.display = 'none';
+                    wrapEl.appendChild(img);
+                } else if (tag && initEl) {
+                    initEl.textContent = tag;
+                }
+            }
+
+            function setWatchLink(url) {
+                var el = document.getElementById('mc-watch-link');
+                if (!el) return;
+                if (url) {
+                    el.href = url;
+                    el.target = '_blank';
+                    el.rel = 'noopener noreferrer';
+                    el.style.visibility = '';
+                } else {
+                    el.style.visibility = 'hidden';
+                }
+            }
+
+            function setMatchDateTime(dateStr, timeStr) {
+                var dateEl = document.getElementById('mc-date-display');
+                var timeEl = document.getElementById('mc-time-display');
+                if (dateEl && dateStr) {
+                    var parts = dateStr.split('-');
+                    if (parts.length === 3) {
+                        var d = new Date(parts[0], parts[1] - 1, parts[2]);
+                        var days = ['DOM', 'LUN', 'MAR', 'MER', 'GIO', 'VEN', 'SAB'];
+                        var months = ['GEN', 'FEB', 'MAR', 'APR', 'MAG', 'GIU', 'LUG', 'AGO', 'SET', 'OTT', 'NOV', 'DIC'];
+                        dateEl.textContent = days[d.getDay()] + ' ' + parseInt(parts[2], 10) + ' ' + months[d.getMonth()] + ' ' + parts[0];
+                    }
+                }
+                if (timeEl && timeStr) {
+                    timeEl.textContent = timeStr + ' CET';
+                }
+            }
+
+            function applyConfig(cfg) {
+                if (!cfg) return;
+                if (cfg.mc_opponent_tag || cfg.mc_opponent_name || cfg.mc_opponent_logo) {
+                    applyOpponent(cfg.mc_opponent_tag, cfg.mc_opponent_name, cfg.mc_opponent_logo);
+                }
+                if (cfg.ascensionNextMatch) {
+                    if (cfg.ascensionNextMatch.stream) setWatchLink(cfg.ascensionNextMatch.stream);
+                    if (cfg.ascensionNextMatch.date || cfg.ascensionNextMatch.time) {
+                        setMatchDateTime(cfg.ascensionNextMatch.date, cfg.ascensionNextMatch.time);
+                        updateCountdownTarget(cfg.ascensionNextMatch.date, cfg.ascensionNextMatch.time);
+                    }
+                }
+            }
+
+            /* 1) Try localStorage first (admin override per-device) */
+            var tag  = localStorage.getItem('mc_opponent_tag');
+            var name = localStorage.getItem('mc_opponent_name');
+            var logo = localStorage.getItem('mc_opponent_logo');
+            if (tag || name || logo) applyOpponent(tag, name, logo);
+
+            var mdFromLS;
+            try {
+                mdFromLS = JSON.parse(localStorage.getItem('ascensionNextMatch'));
+            } catch (_) {}
+            if (mdFromLS) {
+                if (mdFromLS.stream) setWatchLink(mdFromLS.stream);
+                if (mdFromLS.date || mdFromLS.time) {
+                    setMatchDateTime(mdFromLS.date, mdFromLS.time);
+                    updateCountdownTarget(mdFromLS.date, mdFromLS.time);
+                }
+                return;
+            }
+
+            /* 2) Fetch from live API endpoint (same-origin proxy -> Worker) */
+            var PUBLISH_API_URL = '/api/config';
+
+            function fetchLegacyFallback() {
+                var xhr2 = new XMLHttpRequest();
+                xhr2.open('GET', 'match-config.json', true);
+                xhr2.onload = function () {
+                    if (xhr2.status >= 200 && xhr2.status < 400) {
+                        try { applyConfig(JSON.parse(xhr2.responseText)); return; } catch (_) {}
+                    }
+                    /* 4) Fallback: legacy backup JSON */
+                    var xhr3 = new XMLHttpRequest();
+                    xhr3.open('GET', 'ascension-backup-player-names.json', true);
+                    xhr3.onload = function () {
+                        if (xhr3.status >= 200 && xhr3.status < 400) {
+                            try {
+                                var data = JSON.parse(xhr3.responseText);
+                                if (data.ascensionNextMatch) {
+                                    if (data.ascensionNextMatch.stream) setWatchLink(data.ascensionNextMatch.stream);
+                                    if (data.ascensionNextMatch.date || data.ascensionNextMatch.time) {
+                                        setMatchDateTime(data.ascensionNextMatch.date, data.ascensionNextMatch.time);
+                                        updateCountdownTarget(data.ascensionNextMatch.date, data.ascensionNextMatch.time);
+                                    }
+                                } else { setWatchLink(); }
+                            } catch (_) { setWatchLink(); }
+                        } else { setWatchLink(); }
+                    };
+                    xhr3.onerror = function () { setWatchLink(); };
+                    xhr3.send();
+                };
+                xhr2.onerror = function () {
+                    var xhr3 = new XMLHttpRequest();
+                    xhr3.open('GET', 'ascension-backup-player-names.json', true);
+                    xhr3.onload = function () {
+                        if (xhr3.status >= 200 && xhr3.status < 400) {
+                            try {
+                                var data = JSON.parse(xhr3.responseText);
+                                if (data.ascensionNextMatch) {
+                                    if (data.ascensionNextMatch.stream) setWatchLink(data.ascensionNextMatch.stream);
+                                    if (data.ascensionNextMatch.date || data.ascensionNextMatch.time) {
+                                        setMatchDateTime(data.ascensionNextMatch.date, data.ascensionNextMatch.time);
+                                        updateCountdownTarget(data.ascensionNextMatch.date, data.ascensionNextMatch.time);
+                                    }
+                                } else { setWatchLink(); }
+                            } catch (_) { setWatchLink(); }
+                        } else { setWatchLink(); }
+                    };
+                    xhr3.onerror = function () { setWatchLink(); };
+                    xhr3.send();
+                };
+                xhr2.send();
+            }
+
+            var apiXhr = new XMLHttpRequest();
+            apiXhr.open('GET', PUBLISH_API_URL, true);
+            apiXhr.onload = function () {
+                if (apiXhr.status >= 200 && apiXhr.status < 400) {
+                    try { applyConfig(JSON.parse(apiXhr.responseText)); return; } catch (_) {}
+                }
+                fetchLegacyFallback();
+            };
+            apiXhr.onerror = function () { fetchLegacyFallback(); };
+            apiXhr.send();
+        })();
+    </script>
+</body>
+</html>

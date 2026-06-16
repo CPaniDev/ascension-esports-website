@@ -1,0 +1,954 @@
+{
+  "playerData_kkm": {
+    "id": "kkm",
+    "name": "KKM",
+    "role": "Jungle",
+    "realName": "Jungler",
+    "bio": "KKM bring jungling expertise to the team with strategic pathing and objective control.",
+    "stats": {
+      "totalGames": 5,
+      "wins": 4,
+      "totalKills": 22,
+      "totalDeaths": 7,
+      "totalAssists": 29,
+      "kda": "7.29",
+      "winRate": 80
+    },
+    "champions": [
+      {
+        "name": "Aatrox",
+        "games": 2,
+        "wins": 1
+      },
+      {
+        "name": "Hecarim",
+        "games": 1,
+        "wins": 1
+      },
+      {
+        "name": "Ambessa",
+        "games": 1,
+        "wins": 1
+      },
+      {
+        "name": "Xin Zhao",
+        "games": 1,
+        "wins": 1
+      }
+    ],
+    "matches": [
+      {
+        "champion": "Aatrox",
+        "result": "win",
+        "kills": 3,
+        "deaths": 0,
+        "assists": 8,
+        "date": "2026-04-22T00:00:00.000Z"
+      },
+      {
+        "champion": "Hecarim",
+        "result": "win",
+        "kills": 6,
+        "deaths": 1,
+        "assists": 8,
+        "date": "2026-04-22T00:00:00.000Z"
+      },
+      {
+        "champion": "Ambessa",
+        "result": "win",
+        "kills": 5,
+        "deaths": 0,
+        "assists": 6,
+        "date": "2026-04-22T00:00:00.000Z"
+      },
+      {
+        "champion": "Xin Zhao",
+        "result": "win",
+        "kills": 6,
+        "deaths": 2,
+        "assists": 4,
+        "date": "2026-04-22T00:00:00.000Z"
+      },
+      {
+        "champion": "Aatrox",
+        "result": "loss",
+        "kills": 2,
+        "deaths": 4,
+        "assists": 3,
+        "date": "2026-05-06T00:00:00.000Z"
+      }
+    ]
+  },
+  "playerData_majima": {
+    "id": "majima",
+    "name": "Majima",
+    "role": "Mid",
+    "realName": "Mid Laner",
+    "bio": "Majima rules the mid lane.",
+    "stats": {
+      "totalGames": 10,
+      "wins": 8,
+      "totalKills": 64,
+      "totalDeaths": 16,
+      "totalAssists": 93,
+      "kda": "9.81",
+      "winRate": 80
+    },
+    "champions": [
+      {
+        "name": "Swain",
+        "games": 3,
+        "wins": 2
+      },
+      {
+        "name": "Singed",
+        "games": 3,
+        "wins": 3
+      },
+      {
+        "name": "Orianna",
+        "games": 1,
+        "wins": 1
+      },
+      {
+        "name": "Lissandra",
+        "games": 1,
+        "wins": 1
+      },
+      {
+        "name": "Vladimir",
+        "games": 1,
+        "wins": 0
+      },
+      {
+        "name": "Akali",
+        "games": 1,
+        "wins": 1
+      }
+    ],
+    "matches": [
+      {
+        "champion": "Swain",
+        "result": "win",
+        "kills": 11,
+        "deaths": 1,
+        "assists": 10,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Singed",
+        "result": "win",
+        "kills": 9,
+        "deaths": 2,
+        "assists": 13,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Swain",
+        "result": "loss",
+        "kills": 7,
+        "deaths": 3,
+        "assists": 8,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Orianna",
+        "result": "win",
+        "kills": 4,
+        "deaths": 1,
+        "assists": 11,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Singed",
+        "result": "win",
+        "kills": 1,
+        "deaths": 2,
+        "assists": 10,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Swain",
+        "result": "win",
+        "kills": 7,
+        "deaths": 0,
+        "assists": 12,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Singed",
+        "result": "win",
+        "kills": 5,
+        "deaths": 1,
+        "assists": 17,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Lissandra",
+        "result": "win",
+        "kills": 10,
+        "deaths": 3,
+        "assists": 6,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Vladimir",
+        "result": "loss",
+        "kills": 4,
+        "deaths": 2,
+        "assists": 1,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Akali",
+        "result": "win",
+        "kills": 6,
+        "deaths": 1,
+        "assists": 5,
+        "date": "2026-04-19T00:00:00.000Z"
+      }
+    ]
+  },
+  "playerData_coneglianum": {
+    "id": "coneglianum",
+    "name": "Coneglianum",
+    "role": "ADC",
+    "realName": "Bot Laner",
+    "bio": "Coneglianum delivers consistent damage.",
+    "stats": {
+      "totalGames": 24,
+      "wins": 20,
+      "totalKills": 87,
+      "totalDeaths": 55,
+      "totalAssists": 194,
+      "kda": "5.11",
+      "winRate": 83
+    },
+    "champions": [
+      {
+        "name": "Ashe",
+        "games": 4,
+        "wins": 4
+      },
+      {
+        "name": "Smolder",
+        "games": 5,
+        "wins": 4
+      },
+      {
+        "name": "Ezreal",
+        "games": 5,
+        "wins": 4
+      },
+      {
+        "name": "Xayah",
+        "games": 2,
+        "wins": 2
+      },
+      {
+        "name": "Corki",
+        "games": 4,
+        "wins": 3
+      },
+      {
+        "name": "Senna",
+        "games": 2,
+        "wins": 2
+      },
+      {
+        "name": "Kai'Sa",
+        "games": 1,
+        "wins": 1
+      },
+      {
+        "name": "Vayne",
+        "games": 1,
+        "wins": 1
+      },
+      {
+        "name": "Sivir",
+        "games": 1,
+        "wins": 0
+      }
+    ],
+    "matches": [
+      {
+        "champion": "Smolder",
+        "result": "win",
+        "kills": 6,
+        "deaths": 1,
+        "assists": 7,
+        "date": "2026-02-04T00:00:00.000Z"
+      },
+      {
+        "champion": "Xayah",
+        "result": "win",
+        "kills": 3,
+        "deaths": 4,
+        "assists": 11,
+        "date": "2026-02-04T00:00:00.000Z"
+      },
+      {
+        "champion": "Ezreal",
+        "result": "win",
+        "kills": 3,
+        "deaths": 1,
+        "assists": 6,
+        "date": "2026-02-09T00:00:00.000Z"
+      },
+      {
+        "champion": "Corki",
+        "result": "win",
+        "kills": 3,
+        "deaths": 0,
+        "assists": 5,
+        "date": "2026-02-09T00:00:00.000Z"
+      },
+      {
+        "champion": "Senna",
+        "result": "win",
+        "kills": 3,
+        "deaths": 1,
+        "assists": 16,
+        "date": "2026-02-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Sivir",
+        "result": "loss",
+        "kills": 2,
+        "deaths": 6,
+        "assists": 7,
+        "date": "2026-02-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Ashe",
+        "result": "win",
+        "kills": 2,
+        "deaths": 5,
+        "assists": 13,
+        "date": "2026-02-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Corki",
+        "result": "loss",
+        "kills": 1,
+        "deaths": 3,
+        "assists": 3,
+        "date": "2026-02-25T00:00:00.000Z"
+      },
+      {
+        "champion": "Smolder",
+        "result": "loss",
+        "kills": 2,
+        "deaths": 3,
+        "assists": 6,
+        "date": "2026-02-25T00:00:00.000Z"
+      },
+      {
+        "champion": "Ezreal",
+        "result": "win",
+        "kills": 3,
+        "deaths": 2,
+        "assists": 7,
+        "date": "2026-03-03T00:00:00.000Z"
+      },
+      {
+        "champion": "Ashe",
+        "result": "win",
+        "kills": 1,
+        "deaths": 0,
+        "assists": 12,
+        "date": "2026-03-03T00:00:00.000Z"
+      },
+      {
+        "champion": "Smolder",
+        "result": "win",
+        "kills": 3,
+        "deaths": 1,
+        "assists": 7,
+        "date": "2026-03-10T00:00:00.000Z"
+      },
+      {
+        "champion": "Ezreal",
+        "result": "win",
+        "kills": 4,
+        "deaths": 3,
+        "assists": 16,
+        "date": "2026-03-10T00:00:00.000Z"
+      },
+      {
+        "champion": "Ezreal",
+        "result": "loss",
+        "kills": 3,
+        "deaths": 2,
+        "assists": 5,
+        "date": "2026-03-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Smolder",
+        "result": "win",
+        "kills": 3,
+        "deaths": 4,
+        "assists": 5,
+        "date": "2026-03-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Ashe",
+        "result": "win",
+        "kills": 2,
+        "deaths": 2,
+        "assists": 4,
+        "date": "2026-03-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Ezreal",
+        "result": "win",
+        "kills": 8,
+        "deaths": 3,
+        "assists": 10,
+        "date": "2026-03-24T00:00:00.000Z"
+      },
+      {
+        "champion": "Kai'Sa",
+        "result": "win",
+        "kills": 8,
+        "deaths": 4,
+        "assists": 11,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Ezreal",
+        "result": "win",
+        "kills": 3,
+        "deaths": 2,
+        "assists": 9,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Vayne",
+        "result": "win",
+        "kills": 2,
+        "deaths": 0,
+        "assists": 7,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Smolder",
+        "result": "win",
+        "kills": 3,
+        "deaths": 3,
+        "assists": 5,
+        "date": "2026-04-22T00:00:00.000Z"
+      },
+      {
+        "champion": "Corki",
+        "result": "win",
+        "kills": 7,
+        "deaths": 1,
+        "assists": 9,
+        "date": "2026-04-22T00:00:00.000Z"
+      },
+      {
+        "champion": "Corki",
+        "result": "win",
+        "kills": 9,
+        "deaths": 1,
+        "assists": 3,
+        "date": "2026-04-22T00:00:00.000Z"
+      },
+      {
+        "champion": "Ashe",
+        "result": "win",
+        "kills": 3,
+        "deaths": 3,
+        "assists": 10,
+        "date": "2026-04-22T00:00:00.000Z"
+      }
+    ]
+  },
+  "playerData_arashi": {
+    "id": "arashi",
+    "name": "Arashi",
+    "role": "Mid",
+    "realName": "Mid Laner",
+    "bio": "Arashi dominates the top lane with an aggressive playstyle.",
+    "stats": {
+      "totalGames": 17,
+      "wins": 13,
+      "totalKills": 57,
+      "totalDeaths": 39,
+      "totalAssists": 106,
+      "kda": "4.18",
+      "winRate": 76
+    },
+    "champions": [
+      {
+        "name": "Akali",
+        "games": 4,
+        "wins": 4
+      },
+      {
+        "name": "Rumble",
+        "games": 3,
+        "wins": 2
+      },
+      {
+        "name": "Swain",
+        "games": 2,
+        "wins": 2
+      },
+      {
+        "name": "Aurora",
+        "games": 2,
+        "wins": 1
+      },
+      {
+        "name": "Wukong",
+        "games": 2,
+        "wins": 1
+      },
+      {
+        "name": "Renekton",
+        "games": 2,
+        "wins": 1
+      },
+      {
+        "name": "Gnar",
+        "games": 1,
+        "wins": 1
+      },
+      {
+        "name": "Camille",
+        "games": 1,
+        "wins": 1
+      }
+    ],
+    "matches": [
+      {
+        "champion": "Akali",
+        "result": "win",
+        "kills": 2,
+        "deaths": 3,
+        "assists": 8,
+        "date": "2026-02-02T00:00:00.000Z"
+      },
+      {
+        "champion": "Rumble",
+        "result": "win",
+        "kills": 4,
+        "deaths": 1,
+        "assists": 4,
+        "date": "2026-02-02T00:00:00.000Z"
+      },
+      {
+        "champion": "Rumble",
+        "result": "win",
+        "kills": 4,
+        "deaths": 0,
+        "assists": 5,
+        "date": "2026-02-09T00:00:00.000Z"
+      },
+      {
+        "champion": "Swain",
+        "result": "win",
+        "kills": 0,
+        "deaths": 1,
+        "assists": 1,
+        "date": "2026-02-09T00:00:00.000Z"
+      },
+      {
+        "champion": "Akali",
+        "result": "win",
+        "kills": 5,
+        "deaths": 5,
+        "assists": 6,
+        "date": "2026-02-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Aurora",
+        "result": "win",
+        "kills": 10,
+        "deaths": 2,
+        "assists": 10,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Rumble",
+        "result": "loss",
+        "kills": 0,
+        "deaths": 3,
+        "assists": 6,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Aurora",
+        "result": "loss",
+        "kills": 4,
+        "deaths": 2,
+        "assists": 2,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Mordekaiser",
+        "result": "win",
+        "kills": 1,
+        "deaths": 2,
+        "assists": 7,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Akali",
+        "result": "win",
+        "kills": 2,
+        "deaths": 2,
+        "assists": 2,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Wukong",
+        "result": "win",
+        "kills": 0,
+        "deaths": 2,
+        "assists": 14,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Ambessa",
+        "result": "win",
+        "kills": 6,
+        "deaths": 3,
+        "assists": 5,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Wukong",
+        "result": "loss",
+        "kills": 2,
+        "deaths": 4,
+        "assists": 8,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Renekton",
+        "result": "win",
+        "kills": 1,
+        "deaths": 2,
+        "assists": 3,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Renekton",
+        "result": "win",
+        "kills": 2,
+        "deaths": 2,
+        "assists": 1,
+        "date": "2026-04-19T00:00:00.000Z"
+      },
+      {
+        "champion": "Gnar",
+        "result": "win",
+        "kills": 1,
+        "deaths": 2,
+        "assists": 8,
+        "date": "2026-04-22T00:00:00.000Z"
+      },
+      {
+        "champion": "Camille",
+        "result": "win",
+        "kills": 3,
+        "deaths": 0,
+        "assists": 3,
+        "date": "2026-04-22T00:00:00.000Z"
+      }
+    ]
+  },
+  "playerData_cronix": {
+    "id": "cronix",
+    "name": "Cronix",
+    "role": "Support",
+    "realName": "Support",
+    "bio": "Cronix provides support with vision control and engage potential.",
+    "stats": {
+      "totalGames": 4,
+      "wins": 4,
+      "totalKills": 2,
+      "totalDeaths": 8,
+      "totalAssists": 52,
+      "kda": "6.75",
+      "winRate": 100
+    },
+    "champions": [
+      {
+        "name": "Singed",
+        "games": 1,
+        "wins": 1
+      },
+      {
+        "name": "Jarvan IV",
+        "games": 2,
+        "wins": 2
+      },
+      {
+        "name": "Thresh",
+        "games": 1,
+        "wins": 1
+      }
+    ],
+    "matches": [
+      {
+        "champion": "Singed",
+        "result": "win",
+        "kills": 0,
+        "deaths": 2,
+        "assists": 12,
+        "date": "2026-04-22T00:00:00.000Z"
+      },
+      {
+        "champion": "Jarvan IV",
+        "result": "win",
+        "kills": 1,
+        "deaths": 2,
+        "assists": 15,
+        "date": "2026-04-22T00:00:00.000Z"
+      },
+      {
+        "champion": "Thresh",
+        "result": "win",
+        "kills": 1,
+        "deaths": 2,
+        "assists": 11,
+        "date": "2026-04-22T00:00:00.000Z"
+      },
+      {
+        "champion": "Jarvan IV",
+        "result": "win",
+        "kills": 0,
+        "deaths": 2,
+        "assists": 14,
+        "date": "2026-04-22T00:00:00.000Z"
+      }
+    ]
+  },
+  "playerData_al3xand3r": {
+    "id": "al3xand3r",
+    "name": "Al3xand3r",
+    "role": "Top",
+    "realName": "Top Laner",
+    "bio": "Al3xand3r dominates the mid lane with mechanical precision and game sense.",
+    "stats": {
+      "totalGames": 8,
+      "wins": 6,
+      "totalKills": 25,
+      "totalDeaths": 16,
+      "totalAssists": 31,
+      "kda": "3.50",
+      "winRate": 75
+    },
+    "champions": [
+      {
+        "name": "Gnar",
+        "games": 1,
+        "wins": 1
+      },
+      {
+        "name": "Camille",
+        "games": 2,
+        "wins": 2
+      },
+      {
+        "name": "K'sante",
+        "games": 1,
+        "wins": 1
+      },
+      {
+        "name": "Ahri",
+        "games": 1,
+        "wins": 1
+      },
+      {
+        "name": "Ryze",
+        "games": 1,
+        "wins": 1
+      },
+      {
+        "name": "Jax",
+        "games": 1,
+        "wins": 0
+      },
+      {
+        "name": "Aurora",
+        "games": 1,
+        "wins": 0
+      }
+    ],
+    "matches": [
+      {
+        "champion": "Gnar",
+        "result": "win",
+        "kills": 1,
+        "deaths": 2,
+        "assists": 8,
+        "date": "2026-04-22T00:00:00.000Z"
+      },
+      {
+        "champion": "Camille",
+        "result": "win",
+        "kills": 3,
+        "deaths": 0,
+        "assists": 3,
+        "date": "2026-04-22T00:00:00.000Z"
+      },
+      {
+        "champion": "K'sante",
+        "result": "win",
+        "kills": 3,
+        "deaths": 2,
+        "assists": 4,
+        "date": "2026-04-22T00:00:00.000Z"
+      },
+      {
+        "champion": "Ahri",
+        "result": "win",
+        "kills": 4,
+        "deaths": 1,
+        "assists": 2,
+        "date": "2026-04-22T00:00:00.000Z"
+      },
+      {
+        "champion": "Camille",
+        "result": "win",
+        "kills": 5,
+        "deaths": 2,
+        "assists": 6,
+        "date": "2026-04-22T00:00:00.000Z"
+      },
+      {
+        "champion": "Ryze",
+        "result": "win",
+        "kills": 6,
+        "deaths": 2,
+        "assists": 3,
+        "date": "2026-04-22T00:00:00.000Z"
+      },
+      {
+        "champion": "Jax",
+        "result": "loss",
+        "kills": 1,
+        "deaths": 2,
+        "assists": 3,
+        "date": "2026-05-06T00:00:00.000Z"
+      },
+      {
+        "champion": "Aurora",
+        "result": "loss",
+        "kills": 2,
+        "deaths": 5,
+        "assists": 2,
+        "date": "2026-05-06T00:00:00.000Z"
+      }
+    ]
+  },
+  "playerData_butanero": {
+    "id": "butanero",
+    "name": "Butanero",
+    "role": "Jungle",
+    "realName": "Jungler",
+    "bio": "Butanero controls the jungle with precision.",
+    "stats": {
+      "totalGames": 4,
+      "wins": 4,
+      "totalKills": 34,
+      "totalDeaths": 6,
+      "totalAssists": 23,
+      "kda": "9.50",
+      "winRate": 100
+    },
+    "champions": [
+      {
+        "name": "Master Yi",
+        "games": 1,
+        "wins": 1
+      },
+      {
+        "name": "Fiora",
+        "games": 1,
+        "wins": 1
+      },
+      {
+        "name": "Aatrox",
+        "games": 1,
+        "wins": 1
+      },
+      {
+        "name": "Gwen",
+        "games": 1,
+        "wins": 1
+      }
+    ],
+    "matches": [
+      {
+        "champion": "Master Yi",
+        "result": "win",
+        "kills": 14,
+        "deaths": 2,
+        "assists": 3,
+        "date": "2026-02-02T00:00:00.000Z"
+      },
+      {
+        "champion": "Fiora",
+        "result": "win",
+        "kills": 8,
+        "deaths": 2,
+        "assists": 7,
+        "date": "2026-02-02T00:00:00.000Z"
+      },
+      {
+        "champion": "Aatrox",
+        "result": "win",
+        "kills": 6,
+        "deaths": 1,
+        "assists": 8,
+        "date": "2026-02-09T00:00:00.000Z"
+      },
+      {
+        "champion": "Gwen",
+        "result": "win",
+        "kills": 6,
+        "deaths": 1,
+        "assists": 5,
+        "date": "2026-02-09T00:00:00.000Z"
+      }
+    ]
+  },
+  "adminRecentUpdates": [
+    "22/04/2026 - Cronix - Jarvan IV (WIN 0/2/14)",
+    "22/04/2026 - Coneglianum - Ashe (WIN 3/3/10)",
+    "22/04/2026 - Al3xand3r - Ryze (WIN 6/2/3)",
+    "22/04/2026 - KKM - Xin Zhao (WIN 6/2/4)",
+    "22/04/2026 - Al3xand3r - Camille (WIN 5/2/6)",
+    "22/04/2026 - Cronix - Thresh (WIN 1/2/11)",
+    "22/04/2026 - Coneglianum - Corki (WIN 9/1/3)",
+    "22/04/2026 - Al3xand3r - Ahri (WIN 4/1/2)",
+    "22/04/2026 - KKM - Ambessa (WIN 5/0/6)",
+    "22/04/2026 - Al3xand3r - K'sante (WIN 3/2/4)"
+  ],
+  "adminRecentUpdatesMeta": [
+    { "playerId": "cronix" },
+    { "playerId": "coneglianum" },
+    { "playerId": "al3xand3r" },
+    { "playerId": "kkm" },
+    { "playerId": "al3xand3r" },
+    { "playerId": "cronix" },
+    { "playerId": "coneglianum" },
+    { "playerId": "al3xand3r" },
+    { "playerId": "kkm" },
+    { "playerId": "al3xand3r" }
+  ],
+  "ascensionNews": [],
+  "ascensionNextMatch": {
+    "date": "2026-04-27",
+    "time": "21:30",
+    "opponent": "ZTA",
+    "stream": "https://www.twitch.tv/ascensionesportstv"
+  }
+}
