@@ -581,6 +581,11 @@ a.player-card {
     margin: 0 auto;
 }
 
+.staff-grid .player-card {
+    max-width: 280px;
+    margin: 0 auto;
+}
+
 .player-card.staff-card {
     display: block;
     background: var(--bg-card);
