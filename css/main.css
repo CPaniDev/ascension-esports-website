@@ -560,6 +560,78 @@ a.player-card {
     box-shadow: none;
 }
 
+/* Staff Section */
+.staff-grid-single {
+    display: flex;
+    justify-content: center;
+    max-width: 1400px;
+    margin: 0 auto 1.5rem;
+}
+
+.staff-grid-single .player-card {
+    width: 100%;
+    max-width: 280px;
+}
+
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.player-card.staff-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: auto;
+    min-height: 240px;
+    cursor: default;
+    padding: 2rem 1.5rem;
+}
+
+.player-card.staff-card::after {
+    display: none;
+}
+
+.player-card.staff-card .player-role,
+.player-card.staff-card .player-name,
+.player-card.staff-card .player-handle {
+    position: static;
+    margin-bottom: 0.5rem;
+}
+
+.player-card.staff-card .player-name {
+    font-size: 1.75rem;
+}
+
+.player-card.staff-card .player-handle {
+    margin-bottom: 0;
+}
+
+.player-card.staff-card:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.player-card.staff-card:hover::before {
+    transform: scaleX(0);
+}
+
+@media (max-width: 800px) {
+    .staff-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .staff-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Gakuen Candidates */
 .player-card.substitute.gakuen {
     opacity: 0.5;

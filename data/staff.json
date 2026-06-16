@@ -1,0 +1,32 @@
+{
+    "ceo": {
+        "id": "ceo",
+        "name": "CEO",
+        "role": "CEO",
+        "handle": "Chief Executive Officer"
+    },
+    "admin1": {
+        "id": "admin1",
+        "name": "Admin 1",
+        "role": "Admin",
+        "handle": "Staff"
+    },
+    "admin2": {
+        "id": "admin2",
+        "name": "Admin 2",
+        "role": "Admin",
+        "handle": "Staff"
+    },
+    "admin3": {
+        "id": "admin3",
+        "name": "Admin 3",
+        "role": "Admin",
+        "handle": "Staff"
+    },
+    "admin4": {
+        "id": "admin4",
+        "name": "Admin 4",
+        "role": "Admin",
+        "handle": "Staff"
+    }
+}
