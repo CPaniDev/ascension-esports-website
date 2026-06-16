@@ -1,17 +1,31 @@
-// Proxies GET requests to the Worker (same-origin, avoids mobile blocking)
-var WORKER_URL = 'https://ascension-publish.christopher-pani.workers.dev';
-
 export async function onRequest(context) {
-    try {
-        var response = await fetch(WORKER_URL);
-        var data = await response.json();
-        return new Response(JSON.stringify(data), {
-            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-        });
-    } catch (err) {
-        return new Response('{}', {
-            status: 200,
-            headers: { 'Content-Type': 'application/json' }
-        });
+    var kv = context.env.ASCENSION_KV;
+
+    if (context.request.method === 'POST') {
+        try {
+            var body = await context.request.json();
+            await kv.put('match_config', JSON.stringify(body));
+            return new Response(JSON.stringify({ ok: true }), {
+                headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+            });
+        } catch (err) {
+            return new Response(JSON.stringify({ error: err.message }), {
+                status: 500,
+                headers: { 'Content-Type': 'application/json' }
+            });
+        }
     }
+
+    try {
+        var data = await kv.get('match_config');
+        if (data) {
+            return new Response(data, {
+                headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+            });
+        }
+    } catch (_) {}
+
+    return new Response('{}', {
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+    });
 }

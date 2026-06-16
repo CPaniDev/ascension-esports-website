@@ -3,7 +3,7 @@
  * XSS-protected version with input sanitization
  */
 
-var PUBLISH_API_URL = (typeof ASCENSION_CONFIG !== 'undefined' ? ASCENSION_CONFIG.PUBLISH_API_URL : null) || 'https://ascension-publish.christopher-pani.workers.dev';
+var PUBLISH_API_URL = '/api/config';
 
 class SecureAdminBackoffice {
     constructor() {
