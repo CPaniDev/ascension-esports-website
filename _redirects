@@ -14,5 +14,4 @@
 # News
 /news  /pages/news.html
 
-# 404 handling
-/*  /404.html  404
+# 404 handling (Cloudflare Pages auto-serves 404.html)

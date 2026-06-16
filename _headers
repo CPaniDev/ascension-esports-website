@@ -12,11 +12,11 @@
 /data/*
   Cache-Control: public, max-age=300
 
-*.html
+/pages/*
   Cache-Control: public, max-age=0, must-revalidate
 
-*.js
+/scripts/*
   Cache-Control: public, max-age=86400
 
-*.css
+/styles/*
   Cache-Control: public, max-age=86400
