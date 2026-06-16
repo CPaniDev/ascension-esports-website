@@ -581,11 +581,6 @@ a.player-card {
     margin: 0 auto;
 }
 
-.staff-grid .player-card {
-    max-width: 280px;
-    margin: 0 auto;
-}
-
 .player-card.staff-card {
     display: block;
     background: var(--bg-card);
@@ -668,6 +663,11 @@ a.player-card {
         bottom: 1rem;
     }
 
+    .staff-grid .player-card {
+        max-width: 220px;
+        margin: 0 auto;
+    }
+
     .staff-grid-single .player-card {
         max-width: 220px;
     }
@@ -680,6 +680,11 @@ a.player-card {
 
     .player-card.staff-card {
         min-height: 250px;
+    }
+
+    .staff-grid .player-card {
+        max-width: 160px;
+        margin: 0 auto;
     }
 
     .staff-grid-single .player-card {
